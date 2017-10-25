@@ -1,0 +1,223 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>10-19.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+<script>
+//1
+var oDate1= new Date();
+oDate1.setDate(1);
+alert("本月第一天是周"+oDate1.getDay());
+//2
+var oDate2 = new Date();
+oDate2.setMonth(oDate2.getMonth()+1);
+oDate2.setDate(0);
+alert("本月有几天:"+oDate2.getDate());
+//比大小
+var a = '12';
+var b = 5;
+
+if(a > b){
+	alert('a > b为true');
+}else{
+	alert('a > b为fasle');
+}
+//截取文件后缀名
+var str = 'adsadsadadsadsadadsadsadadsadsad.html.txt.doc';
+var iNow = str.lastIndexOf('.');
+alert("文件后缀名为:"+str.substring(iNow+1));
+//浏览器信息
+if(window.navigator.userAgent.indexOf('Chrome') != -1){
+	alert('Chrome');
+}else if(window.navigator.userAgent.indexOf('Firefox') != -1){
+	alert('Firefox');
+}else{
+	alert('其它');
+}
+//模拟reverse
+var arr = [1,2,3,4,5];
+var arr2 = [];
+while(arr.length){
+	arr2.push(arr.pop());
+}
+alert(arr2);
+//清空数组
+var arr2 = [1,2,3,4,5];
+while(arr2.length){
+	arr2.shift();
+}
+alert("shift清空数组后数组的长度为:"+arr2.length);
+//求和
+function sum(){
+	var res=0;
+	for(var i=0;i<arguments.length;i++){
+		res+=arguments[i];
+	}
+	return res;
+	}
+alert("1+5+6和为:"+sum(1,5,6))
+//首字母大写
+var str = 'welcome to china';
+//Welcome To China
+var arr3 = str.split(' ');
+var arr4 = [];
+//[welcome,to,china]
+for(var i = 0; i < arr3.length; i++){
+	var newStr = arr3[i].charAt(0).toUpperCase() + arr3[i].substring(1);
+	arr4.push(newStr);
+}
+alert("首字母大写表示为:"+arr4.join(' '));
+//数组1
+var arr5 = [1,2,3,4];
+arr5.push(5);
+alert("1,2,3,4push数组为:"+arr5);
+//数组2
+var arr6 = [2,3,4,5];
+arr6.unshift(1);
+alert("1,2,3,4,5unshift数组为:"+arr6);
+//数组3
+var arr7 = [1,2,3,4,5];
+arr7.pop();
+alert("1,2,3,4,5pop数组为:"+arr7);
+//数组4
+var arr8 = [1,2,3,4,5];
+arr8.shift();
+alert("1,2,3,4,5shift数组为:"+arr8);
+//数组6
+var arr9 = [1,2,3,4,5];
+alert("1,2,3,4,5reverse数组为:"+arr9.reverse());
+//数组7
+var arr11 = [1,2,3];
+var arr22 = [4,5,6];
+var arr33 = [7,8,9];
+alert("合并数组为"+arr11.concat(arr22,arr33));
+//数组8
+var arr12 = [10,32,2,42,6375,90,32,06,17,52];
+arr12.sort();
+alert("10,32,2,42,6375,90,32,06,17,52sort数组为:"+arr12);
+//数组9
+var arr13 = ['welcome','to','china'];
+//welocme&to&china
+var c = arr13.join('&');
+alert("'welcome','to','china'join&数组为:"+c);
+//字符串1
+var str1 = '  ';
+alert("两个空格的长度为:"+str.length);
+//2
+var str = 'welcome';
+//alert(str.length);//7
+alert("welcome索引为3的子母是:"+str.charAt(3));
+//3
+var str = 'welcome';
+//alert(str.length);//7
+//alert(str.indexOf('c'));//3
+alert("welcome中e的索引为:"+str.indexOf('e'));//
+//4
+var str = 'welcome';
+alert("welcome中最后一个e的索引为:"+str.lastIndexOf('e'));//6
+//alert(str.lastIndexOf('E'));//-1
+//5
+var str = 'welcome';
+alert("welcome变为大写是:"+str.toUpperCase());
+//6
+var str = 'WELCOME';
+//welocme
+alert("WELCOME变为小写是:"+str.toLowerCase());
+//7
+var str = 'welcome&&to&&china';
+var arr = str.split('&&');
+alert("welcome&&to&&china中split'&'后索引为2的数组为:"+arr[2]);
+//8
+var str = 'width';
+//id
+alert("width中索引为1,3的子母组成的数组是:"+str.substring(1,3));
+
+
+
+//拍卖倒计时
+window.onload = function(){
+	var oBox = document.getElementById('box');
+	var oBox1 = document.getElementById('box1');
+	var oBox2 = document.getElementById('box2');
+	var timer = null;
+	var timer1 = null;
+	var start = 3;//开始拍卖的时间;
+	var end = 5;//结束拍卖的时间
+	oBox1.innerHTML = start + '秒后开始拍卖';
+	
+	timer = setInterval(function(){
+		start--;
+		oBox1.innerHTML = start + '秒后开始拍卖';
+		if(start == 0){
+			oBox1.innerHTML = end + '秒后结束拍卖';	
+			oBox2.innerHTML = '正在拍卖';
+			clearInterval(timer);
+			timer1 = setInterval(function(){
+				end--;
+				oBox1.innerHTML = end + '秒后结束拍卖';
+				if(end == 0){
+					oBox1.innerHTML = '结束拍卖';
+					oBox2.innerHTML = '结束拍卖';
+					clearInterval(timer1);	
+				}
+			},1000);
+		}
+	},1000);
+	
+}
+
+
+
+</script>
+<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+#box {
+	width: 400px;
+	height: 300px;
+	border: #000 1px solid;
+	margin: 100px auto;
+	position: relative;
+}
+#box1 {
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	background: #ccc;
+	color: #000;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+}
+
+#box2 {
+	width: 100px;
+	height:40px;
+	text-align: center;
+	line-height:40px;
+	background: #ccc;
+	color: #000;
+	position: absolute;
+	right:0;
+	top: 0;
+}
+</style>
+
+  </head>
+  
+  <body>
+   <div id="box">
+	<p id="box1"></p>
+    <h4 id="box2">即将拍卖</h4>
+</div>
+   
+  </body>
+</html>
